@@ -1,7 +1,5 @@
 package net.msdh.jtconsole;
 
-import com.sun.xml.internal.messaging.saaj.util.CharReader;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -10,7 +8,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
-import java.io.Console;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Vector;
@@ -438,14 +435,18 @@ public class JTConsole extends JPanel implements KeyListener, MouseListener {
           break;
         }
         case VK_BACK_SPACE:{
-          commandLine = commandLine.substring(0,commandLine.length()-1);
-          this.backSpaceChar();
+          if(incomplitComand){
+            if(commandLine.length()>0){
+              commandLine = commandLine.substring(0,commandLine.length()-1);
+              this.backSpaceChar();
+            }
+          }
           break;
         }
         case VK_DOWN:{
           if(!incomplitComand){
             if((0<=indexCommand)&&(indexCommand<commands.size())){
-              int y=getCursorY();
+              int y = getCursorY();
               String tmp = commands.get(indexCommand); //kopiruem iz vektora vo vremennuu stroku
 
               dataScreen.clearLine(y);
