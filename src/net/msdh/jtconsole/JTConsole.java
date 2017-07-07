@@ -471,9 +471,9 @@ public class JTConsole extends JPanel implements KeyListener, MouseListener {
           break;
         }
         case VK_PAGE_UP:{
-          System.out.print("PAGEUP");
+          //System.out.print("PAGEUP");
           if(scrollPoz<=(size-dataScreen.rows)){
-            System.out.print("scrollPoz: " + scrollPoz);
+           // System.out.print("scrollPoz: " + scrollPoz);
             endScrol=false;
             dataScreen.scroll(-1);
 
